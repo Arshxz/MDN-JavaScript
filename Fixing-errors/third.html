@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <section id="section">
+        <label>Enter age</label><br />
+        <input id="input1" type="number" /><br />
+        <label>Enter amount per day</label><br />
+        <input id="input2" type="number" /><br />
+        <button id="button" onclick="calculateSupply();">Calculate</button>
+        <h3 id="heading_A"></h3>
+
+    </section>
+
+    <script>
+        const buttonA = document.querySelector('#button');
+        const headingA = document.querySelector('#heading_A');
+
+        function calculateSupply() {
+            const maxAge = 60
+            const age = document.getElementById('input1').value;
+            const amount = document.getElementById('input2').value;
+            const yearsLeft = maxAge - age
+            const calculate = yearsLeft * amount * 365
+            headingA.textContent = `You will need ${calculate} to last you until the ripe old age of ${maxAge}`;
+        }
+    </script>
+</body>
+
+</html>

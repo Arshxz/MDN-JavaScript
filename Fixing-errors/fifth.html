@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body onload="celsiusToFahrenheit(); fahrenheitToCelsius();">
+    <section id="section">
+        <h3 id="celsius"></h3>
+        <h3 id="fahrenheit"></h3>
+
+    </section>
+
+    <script>
+        const buttonA = document.querySelector('#button');
+        const Celsius = document.querySelector('#celsius');
+        const Fahrenheit = document.querySelector('#fahrenheit');
+
+        function celsiusToFahrenheit() {
+            const celsiusTemp = 20;
+            const convert = celsiusTemp * 9 / 5 + 32;
+            const round = Math.round(convert)
+            Celsius.textContent = `${celsiusTemp}C is ${round}F`;
+        }
+        function fahrenheitToCelsius() {
+            const fahrenheitTemp = 50;
+            const convert = fahrenheitTemp * 5 / 9 + 1 / 32;
+            const round = Math.round(convert)
+            Fahrenheit.textContent = `${fahrenheitTemp}F is ${round}C`;
+        }
+
+
+    </script>
+</body>
+
+</html>

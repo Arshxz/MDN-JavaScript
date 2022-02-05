@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <section id="section">
+        <label>Enter puppy's age</label><br />
+        <input id="input1" type="number" />
+        <button id="button" onclick="calculateDogAge();">Calculate</button>
+        <h3 id="heading_A"></h3>
+
+    </section>
+
+    <script>
+        const buttonA = document.querySelector('#button');
+        const headingA = document.querySelector('#heading_A');
+
+        function calculateDogAge() {
+            const age = document.getElementById('input1').value;
+            const convert = 7 * age
+            headingA.textContent = `Your doggie is ${convert} years old in dog years!`;
+        }
+    </script>
+</body>
+
+</html>

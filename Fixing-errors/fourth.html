@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <section id="section">
+        <label>Enter Radius of the circle</label><br />
+        <input id="input1" type="number" /><br />
+        <button id="button" onclick="CalcCircumference();">Calculate</button><br /><br />
+
+        <label>Enter Radius of the circle</label><br />
+        <input id="input2" type="number" /><br />
+        <button id="button" onclick="CalcArea();">Calculate</button>
+        <h3 id="circumference"></h3>
+        <h3 id="area"></h3>
+
+    </section>
+
+    <script>
+        const buttonA = document.querySelector('#button');
+        const circumference = document.querySelector('#circumference');
+        const Area = document.querySelector('#area');
+
+        function CalcCircumference() {
+            const Radius1 = document.getElementById('input1').value;
+            const circumferenceOfCircle = 2 * Math.PI * Radius1
+            circumference.textContent = `The circumference is ${circumferenceOfCircle}`;
+        }
+        function CalcArea() {
+            const Radius2 = document.getElementById('input2').value;
+            const areaOfCircle = Math.PI * Radius2 * Radius2
+            Area.textContent = `The area is ${areaOfCircle}`;
+        }
+    </script>
+</body>
+
+</html>

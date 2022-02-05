@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <section id="section">
+        <input id="input1" type="number" placeholder="Enter Number of children..." />
+        <input id="input2" type="text" placeholder="Enter partner's name..." />
+        <input id="input3" type="text" placeholder="Enter Geographic location..." />
+        <input id="input4" type="text" placeholder="Enter job title...">
+        <button id="button" onclick="getInputValue();">Submit</button>
+        <h3 id="heading_A"></h3>
+
+    </section>
+
+    <script>
+        const buttonA = document.querySelector('#button');
+        const headingA = document.querySelector('#heading_A');
+
+        function getInputValue() {
+            const children = document.getElementById('input1').value;
+            const partner = document.getElementById('input2').value;
+            const location = document.getElementById('input3').value;
+            const job = document.getElementById('input4').value;
+            headingA.textContent = `You will be a ${job} in ${location}, and married to ${partner} with ${children}`;
+        }
+    </script>
+</body>
+
+</html>
