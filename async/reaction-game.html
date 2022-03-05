@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>2-player reaction game</title>
+    <link rel="stylesheet" href="./reaction.css">
+</head>
+
+<body>
+
+    <div class="spinner">
+        <div>
+            <p>↻</p>
+        </div>
+    </div>
+
+    <section class="ui">
+        <div class="topbar">
+            <p class="p1">Player 1: "A"</p>
+            <p class="p2">Player 2: "L"</p>
+            <div class="middlebar">
+                <button>Start game</button>
+                <p class="result"></p>
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+
+        // Defining some constants and variables
+        const spinner = document.querySelector('.spinner p');
+        const spinnerContainer = document.querySelector('.spinner');
+        let rotateCount = 0;
+        let startTime = null;
+        let rAF;
+        const btn = document.querySelector('button');
+        const result = document.querySelector('.result');
+
+        // random function that returns a random number
+        function random(min, max) {
+            var num = Math.floor(Math.random() * (max - min)) + min;
+            return num;
+        }
+
+        // Create a draw function
+        function draw(timestamp) {
+            if (!startTime) {
+                startTime = timestamp;
+            }
+
+            rotateCount = (timestamp - startTime) / 3;
+            rotateCount %= 360;
+
+            spinner.style.transform = 'rotate(' + rotateCount + 'deg)';
+            rAF = requestAnimationFrame(draw);
+        }
+
+        // Setting up initial state of the app
+        result.style.display = 'none';
+        spinnerContainer.style.display = 'none';
+
+        // Start the game
+        btn.addEventListener('click', start)
+        function start() {
+            draw()
+            spinnerContainer.style.display = 'block';
+            btn.style.display = 'none';
+            setTimeout(setEndgame, random(5000, 10000));
+        }
+
+        // creeate a setEndgame function
+        function setEndgame() {
+            cancelAnimationFrame(rAF)
+            spinnerContainer.style.display = 'none';
+            result.style.display = 'block';
+            result.textContent = 'PLAYERS GO!!';
+
+            document.addEventListener('keydown', keyHandler);
+            function keyHandler(e) {
+                let isOver = false;
+
+                if (e.key === "a") {
+                    result.textContent = 'Player 1 won!!';
+                    isOver = true;
+                } else if (e.key === "l") {
+                    result.textContent = 'Player 2 won!!';
+                    isOver = true;
+                }
+
+                if (isOver) {
+                    document.removeEventListener('keydown', keyHandler);
+                    setTimeout(reset, 5000);
+                }
+            }
+        }
+
+        // Reset the game
+        function reset() {
+            btn.style.display = 'block';
+            result.textContent = '';
+            result.style.display = 'none';
+        }
+
+    </script>
+
+
+</body>
+
+</html>

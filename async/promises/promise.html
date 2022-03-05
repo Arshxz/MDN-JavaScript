@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <title>Promises</title>
+</head>
+
+<body>
+    <p>Promises</p>
+
+
+    <script>
+
+        // // Fetch the image/object in a variable called promise
+        // let promise = fetch('coffee.jpg');
+
+        // // Create a promise from previous response and check if the response is ok 
+        // let promise2 = promise.then(response => {
+        //     if (!response.ok) {
+        //         throw new Error(`HTTP error! status: ${response.status}`);
+        //     } else {
+        //         return response.blob();
+        //     }
+        // });
+
+        // // Create new promise from previous response and fill the body
+        // let promise3 = promise2.then(myBlob => {
+        //     let objectURL = URL.createObjectURL(myBlob);
+        //     let image = document.createElement('img');
+        //     image.src = objectURL;
+        //     document.body.appendChild(image);
+        // })
+
+        // // Create error handling using catch
+        // let errorCase = promise3.catch(e => {
+        //     console.log('There has been a problem with your fetch operation: ' + e.message);
+        // });
+
+
+        // Better version to write the above code
+        fetch('coffee.jpg')
+            .then(response => {
+                let errorCase = promise3.catch(e => {
+                    console.log('There has been a problem with your fetch operation: ' + e.message);
+                });
+            }).then(myblob => {
+                let objectURL = URL.createObjectURL(myBlob);
+                let image = document.createElement('img');
+                image.src = objectURL;
+                document.body.appendChild(image);
+            }).catch(e => {
+                console.log('There has been a problem with your fetch operation: ' + e.message);
+            });
+
+    </script>
+
+
+</body>
+
+</html>

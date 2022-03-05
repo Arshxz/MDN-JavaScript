@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <title>Spinner</title>
+
+    <style>
+        html {
+            background-color: white;
+            height: 100%;
+        }
+
+        body {
+            height: inherit;
+            background-color: red;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        div {
+            display: inline-block;
+            font-size: 3rem;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div>↻</div>
+
+
+    <script>
+
+        const spinner = document.querySelector('div');
+        let rotateCount = 0;
+        let startTime = null;
+        let rAF;
+
+        // Boolean variable to store state of spinner - true is spinning, false is not spinnig.
+        let spinning = false;
+
+        // Create a draw() function
+        function draw(timestamp) {
+            if (!startTime) {
+                startTime = timestamp;
+            }
+
+            rotateCount = (timestamp - startTime) / 3;
+            spinning = true
+
+            // If rotate gets over 359, set it to 'remainder of dividing by 360'
+            if (rotateCount > 359) {
+                rotateCount %= 360;
+            }
+
+            //Set the rotation of the div to be equal to rotateCount degree
+            spinner.style.transform = `rotate(${rotateCount}deg)`;
+
+            // Call the next frame in the animation
+            rAF = requestAnimationFrame(draw);
+
+            // Event listener to start and stop the spinner
+            document.body.addEventListener('click', () => {
+                if (spinning) {
+                    cancelAnimationFrame(rAF);
+                    spinning = false;
+                } else {
+                    draw();
+                    spinning = true
+                }
+            })
+
+        }
+
+        draw()
+
+    </script>
+
+
+</body>
+
+</html>
